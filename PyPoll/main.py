@@ -31,7 +31,11 @@ with open(csvpath) as csvfile:
 
 #to calculate total number of votes
 Total_votes = len(Ballot_ID)
+
+print("Election Results")
+print("--------------------------------------")
 print(f"Total Votes:  {Total_votes}")
+print("--------------------------------------")
 
 #defining election results as dictionary with candidates as key
 Election_results = {}
@@ -54,3 +58,17 @@ for key in Election_results.keys():
     Percentage_vote = 100*Election_results[key]/Total_votes
     Percentage_vote = round(Percentage_vote,2)
     print(f"{key}:{Election_results[key]} ({Percentage_vote}%)")
+
+#Defining a funciton to find the winner from the dictionary with maximum votes
+def keywithmaxval(d):
+     """ a) create a list of the dict's keys and values; 
+         b) return the key with the max value"""  
+     v=list(d.values())
+     k=list(d.keys())
+     return k[v.index(max(v))]
+
+
+#printing winner
+print("------------------------------------------")
+print(f"Winner: {keywithmaxval(Election_results)}")
+print("-------------------------------------------")
